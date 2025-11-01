@@ -1,4 +1,4 @@
-package com.example.leagueoflegendsapi.ui.theme.data
+package com.example.leagueoflegendsapi.data
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

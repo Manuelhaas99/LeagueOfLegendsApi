@@ -1,7 +1,7 @@
-package com.example.leagueoflegendsapi.ui.theme.data
+package com.example.leagueoflegendsapi.data
 
-import com.example.leagueoflegendsapi.ui.theme.model.Summoner
-import com.example.leagueoflegendsapi.ui.theme.model.SummonerData
+import com.example.leagueoflegendsapi.model.Summoner
+import com.example.leagueoflegendsapi.model.SummonerData
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path

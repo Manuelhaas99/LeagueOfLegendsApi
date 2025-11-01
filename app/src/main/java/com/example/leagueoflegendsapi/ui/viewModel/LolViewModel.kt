@@ -1,16 +1,12 @@
-package com.example.leagueoflegendsapi.ui.theme.viewModel
+package com.example.leagueoflegendsapi.ui.viewModel
 
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.leagueoflegendsapi.ui.theme.data.RetrofitClient
-import com.example.leagueoflegendsapi.ui.theme.model.Summoner
-import com.example.leagueoflegendsapi.ui.theme.model.SummonerData
+import com.example.leagueoflegendsapi.data.RetrofitClient
 import kotlinx.coroutines.launch
-import okhttp3.Response
-import org.w3c.dom.Text
 
 
 class RiotViewModel : ViewModel() {

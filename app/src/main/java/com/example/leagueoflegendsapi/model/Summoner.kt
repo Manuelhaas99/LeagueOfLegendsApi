@@ -1,4 +1,4 @@
-package com.example.leagueoflegendsapi.ui.theme.model
+package com.example.leagueoflegendsapi.model
 
 data class Summoner(
     val id: String,
