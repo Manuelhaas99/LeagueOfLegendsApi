@@ -45,8 +45,8 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SummonerInfoScreen(riotViewModel: RiotViewModel = viewModel()) {
-    var gameName by remember { mutableStateOf("") }
-    var tagLine by remember { mutableStateOf("") }
+    var gameName by remember { mutableStateOf("Vyke") }
+    var tagLine by remember { mutableStateOf("199") }
     var puuid by remember { mutableStateOf("") }
 
     Scaffold(

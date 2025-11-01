@@ -6,12 +6,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.leagueoflegendsapi.data.client.RetrofitClient
+import com.example.leagueoflegendsapi.data.repository.LolRepository
+import com.example.leagueoflegendsapi.data.repository.LolRepositoryI
 import kotlinx.coroutines.launch
 
 
-class RiotViewModel : ViewModel() {
-
-    private val apiKey = "RGAPI-83a5a3dc-a73f-4146-b074-7db118027d7b" // replace with your real key
+class RiotViewModel(
+    private val client: LolRepositoryI = LolRepository(RetrofitClient.api)
+) : ViewModel() {
 
     private val _summonerInfo = mutableStateOf("Enter a summoner name")
     val summonerInfo: State<String> = _summonerInfo
@@ -26,7 +28,7 @@ class RiotViewModel : ViewModel() {
     fun getSummonerData(summonerName: String, tagLine: String) {
         viewModelScope.launch {
             try {
-                val response = RetrofitClient.api.getSummonerByName(summonerName, tagLine, apiKey)
+                val response = client.getAccount(summonerName, tagLine)
                 _puuid.value = response.puuid
 
                 val infoText = buildString {
@@ -50,7 +52,7 @@ class RiotViewModel : ViewModel() {
 
         viewModelScope.launch {
             try {
-                val responseAccount = RetrofitClient.api.getSummonerByPuuid(puuid, apiKey)
+                val responseAccount = RetrofitClient.api.getSummonerByPuuid(puuid, "")
 
                 val infoAccount = buildString {
                     append("Summoner level: ${responseAccount.summonerLevel}\n")
