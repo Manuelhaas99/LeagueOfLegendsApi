@@ -1,6 +1,7 @@
 package com.example.leagueoflegendsapi.data.repository
 
 import com.example.leagueoflegendsapi.model.Summoner
+import com.example.leagueoflegendsapi.model.SummonerData
 
 // Information of the account
 // Matches
@@ -8,5 +9,5 @@ import com.example.leagueoflegendsapi.model.Summoner
 // Ranked info
 interface LolRepositoryI {
   suspend fun getAccount(summonerName: String, tagLine: String): Summoner
-  suspend fun getMatches(): String
+  suspend fun getSummonerData(puuid: String): SummonerData
 }

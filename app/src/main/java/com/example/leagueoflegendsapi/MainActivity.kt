@@ -81,7 +81,6 @@ fun SummonerInfoScreen(riotViewModel: RiotViewModel = viewModel()) {
 
             Button(onClick = {
                 riotViewModel.getSummonerData(gameName, tagLine)
-                riotViewModel.getAccountMatches(puuid)
             }) {
                 Text("Search")
             }

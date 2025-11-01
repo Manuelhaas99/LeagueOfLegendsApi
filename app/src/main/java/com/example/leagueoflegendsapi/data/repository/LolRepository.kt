@@ -1,21 +1,22 @@
 package com.example.leagueoflegendsapi.data.repository
 
-import com.example.leagueoflegendsapi.data.RiotApiService
+import com.example.leagueoflegendsapi.data.AmericaApiService
+import com.example.leagueoflegendsapi.data.LAApiService
 import com.example.leagueoflegendsapi.model.Summoner
+import com.example.leagueoflegendsapi.model.SummonerData
 
 class LolRepository(
-  private val lolApiService: RiotApiService
+  private val lolApiService: AmericaApiService,
+  private val laApiService: LAApiService
 ): LolRepositoryI {
 
-  companion object {
-    private const val API_KEY = "RGAPI-83a5a3dc-a73f-4146-b074-7db118027d7b"
-  }
+
 
   override suspend fun getAccount(summonerName: String, tagLine: String): Summoner {
-    return lolApiService.getSummonerByName(summonerName, tagLine, API_KEY)
+    return lolApiService.getSummonerByName(summonerName, tagLine)
   }
 
-  override suspend fun getMatches(): String {
-    TODO("Not yet implemented")
+  override suspend fun getSummonerData(puuid: String): SummonerData {
+    return laApiService.getSummonerByPuuid(puuid = puuid)
   }
 }
