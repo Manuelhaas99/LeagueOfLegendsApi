@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,9 +48,7 @@ class MainActivity : ComponentActivity() {
 fun SummonerInfoScreen(riotViewModel: RiotViewModel = viewModel()) {
     var gameName by remember { mutableStateOf("") }
     var tagLine by remember { mutableStateOf("") }
-
-    // Observar el estado del ViewModel
-    val summonerInfo by riotViewModel.summonerInfo
+    var puuid by remember { mutableStateOf("") }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -83,12 +82,14 @@ fun SummonerInfoScreen(riotViewModel: RiotViewModel = viewModel()) {
 
             Button(onClick = {
                 riotViewModel.getSummonerData(gameName, tagLine)
+                riotViewModel.getAccountMatches(puuid)
             }) {
                 Text("Search")
             }
 
             Spacer(modifier = Modifier.height(20.dp))
-            Text(summonerInfo)
+            Text(riotViewModel.summonerInfo.value)
+            Text(riotViewModel.summonerAccount.value)
         }
     }
 }

@@ -4,17 +4,18 @@ data class Summoner(
     val id: String,
     val accountId: String,
     val puuid: String,
-    val gameName: String,       // o gameName
-    val summonerLevel: Int,
-    val tagLine: String?    // si estás usando Riot-ID
+    val gameName: String,
+    val summonerLevel: Long,
+    val profileIconId: Int,
+    val revisionDate: Long,
+    val tagLine: String?
 )
 
 data class SummonerData(
-    val id: String,
-    val accountId: String,
     val puuid: String,
-    val name: String,
-    val summonerLevel: Int
+    val profileIconId: Int,
+    val revisionDate: Long,
+    val summonerLevel: Long
 )
 
 data class RankedInfo(

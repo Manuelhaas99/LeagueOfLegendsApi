@@ -1,27 +1,21 @@
 package com.example.leagueoflegendsapi.ui.theme.data
 
-import com.example.leagueoflegendsapi.ui.theme.model.RankedInfo
 import com.example.leagueoflegendsapi.ui.theme.model.Summoner
 import com.example.leagueoflegendsapi.ui.theme.model.SummonerData
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface RiotApiService {
 
 
-    @GET("lol/summoner/v4/summoners/by-puuid/{puuid}")
+    @GET("lol/match/v5/matches/by-puuid/{puuid}/ids")
     suspend fun getSummonerByPuuid(
-            @Path("puuid")puuid: String,
-            @Header("X-Riot-Token") apiKey: String,
+        @Path("puuid") puuid: String,
+        @Query("api_key") apiKey: String,
     ): SummonerData
-
-    @GET("lol/league/v4/entries/by-summoner/{summonerId}")
-    suspend fun getRankedInfo(
-        @Path("summonerId") summonerId: String,
-        @Header("X-Riot-Token") apiKey: String
-    ): List<RankedInfo>
 
     @GET("riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}")
     suspend fun getSummonerByName(
