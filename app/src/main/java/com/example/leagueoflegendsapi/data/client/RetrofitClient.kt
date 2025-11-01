@@ -1,5 +1,6 @@
-package com.example.leagueoflegendsapi.data
+package com.example.leagueoflegendsapi.data.client
 
+import com.example.leagueoflegendsapi.data.RiotApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -8,7 +9,7 @@ object RetrofitClient {
 
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("https://americas.api.riotgames.com/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -16,4 +17,3 @@ object RetrofitClient {
         retrofit.create(RiotApiService::class.java)
     }
 }
-

@@ -5,7 +5,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.leagueoflegendsapi.data.RetrofitClient
+import com.example.leagueoflegendsapi.data.client.RetrofitClient
 import kotlinx.coroutines.launch
 
 

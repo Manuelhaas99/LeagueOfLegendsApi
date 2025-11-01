@@ -10,7 +10,6 @@ import retrofit2.http.Query
 
 interface RiotApiService {
 
-
     @GET("lol/match/v5/matches/by-puuid/{puuid}/ids")
     suspend fun getSummonerByPuuid(
         @Path("puuid") puuid: String,
