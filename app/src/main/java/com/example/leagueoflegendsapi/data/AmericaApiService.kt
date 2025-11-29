@@ -1,5 +1,6 @@
 package com.example.leagueoflegendsapi.data
 
+import com.example.leagueoflegendsapi.model.MatchDetail
 import com.example.leagueoflegendsapi.model.Summoner
 import com.example.leagueoflegendsapi.model.SummonerData
 import retrofit2.http.GET
@@ -11,7 +12,7 @@ import retrofit2.http.Query
 interface AmericaApiService {
 
     companion object {
-        private const val API_KEY = "RGAPI-83a5a3dc-a73f-4146-b074-7db118027d7b"
+        private const val API_KEY = "RGAPI-8f6da874-1b23-4c2c-ad3b-d3122357d72d"
     }
 
     @GET("riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}")
@@ -20,4 +21,18 @@ interface AmericaApiService {
         @Path("tagLine") tagLine: String,
         @Header("X-Riot-Token") apiKey: String = API_KEY
     ): Summoner
+
+    @GET("/lol/match/v5/matches/by-puuid/{puuid}/ids")
+    suspend fun getMatchByPuuid(
+        @Path("puuid") puuid: String,
+        @Query("start") start: Int = 0,
+        @Query("count") count: Int = 20,
+        @Query("api_key") apiKey: String = API_KEY
+    ): List<String>
+
+    @GET("/lol/match/v5/matches/{matchId}")
+    suspend fun getMatchByMatchId(
+        @Path("matchId") matchId: String,
+        @Query("api_key") apiKey: String = API_KEY
+    ): MatchDetail
 }

@@ -55,7 +55,11 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.okhttp.logging)
 
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
+
     // AndroidX y Compose
+    implementation ("androidx.compose.material:material-icons-extended")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -65,6 +69,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui)
 
     // Testing
     testImplementation(libs.junit)
