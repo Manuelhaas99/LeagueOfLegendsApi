@@ -55,12 +55,15 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.okhttp.logging)
 
+    //Navigation
+    implementation(libs.androidx.navigation.compose)
+
     // Coil
     implementation("io.coil-kt:coil-compose:2.6.0")
 
     // AndroidX y Compose
-    implementation ("androidx.compose.material:material-icons-extended")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
+    implementation (libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

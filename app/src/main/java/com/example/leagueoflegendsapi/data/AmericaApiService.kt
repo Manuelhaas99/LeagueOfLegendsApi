@@ -12,7 +12,7 @@ import retrofit2.http.Query
 interface AmericaApiService {
 
     companion object {
-        private const val API_KEY = "RGAPI-8f6da874-1b23-4c2c-ad3b-d3122357d72d"
+        private const val API_KEY = "RGAPI-26b1e96a-8e9b-4293-8519-3591d44caaca"
     }
 
     @GET("riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}")

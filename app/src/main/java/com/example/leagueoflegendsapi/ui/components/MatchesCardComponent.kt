@@ -1,5 +1,6 @@
 package com.example.leagueoflegendsapi.ui.components
 
+import android.text.Layout
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -27,7 +29,9 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.leagueoflegendsapi.data.navigation.AppScreens
 import com.example.leagueoflegendsapi.model.MatchDetail
 import com.example.leagueoflegendsapi.utils.GameDurationSeconds
 import com.example.leagueoflegendsapi.utils.QueueType
@@ -42,10 +46,14 @@ fun MatchesCardComponent(
     modifier: Modifier = Modifier,
     match: MatchDetail,
     myPuuid: String,
+    navController: NavController
 ) {
     val myParticipant = match.info.participants.find { it.puuid == myPuuid }
     val gameDurationText = GameDurationSeconds(match.info)
-    Log.d("TimeDebug", "ID: ${match.metadata.matchId} - Timestamp: ${match.info.gameStartTimestamp}")
+    Log.d(
+        "TimeDebug",
+        "ID: ${match.metadata.matchId} - Timestamp: ${match.info.gameStartTimestamp}"
+    )
     val timeAgoText = getTimeAgo(match.info.gameStartTimestamp)
 
     if (myParticipant != null) {
@@ -90,6 +98,7 @@ fun MatchesCardComponent(
             "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${myParticipant.championId}.png"
 
         ElevatedCard(
+            onClick = { },
             colors = CardDefaults.cardColors(
                 containerColor = backgroundColor,
             ),
@@ -141,14 +150,36 @@ fun MatchesCardComponent(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
                         ) {
-                            AsyncImage(
-                                model = champIconsUrl,
-                                contentDescription = "Images for the 1st summoner spells",
-                                contentScale = ContentScale.Fit,
-                                modifier = Modifier
-                                    .size(50.dp)
-                                    .clip(CircleShape)
-                            )
+                            Box(
+                                modifier = Modifier,
+                                contentAlignment = Alignment.BottomEnd
+                            ) {
+                                AsyncImage(
+                                    model = champIconsUrl,
+                                    contentDescription = "Images for the 1st summoner spells",
+                                    contentScale = ContentScale.Fit,
+                                    modifier = Modifier
+                                        .size(50.dp)
+                                        .clip(CircleShape)
+                                )
+                                Text(
+                                    text = "${myParticipant.champLevel}",
+                                    color = Color.White,
+                                    fontSize = 8.sp,
+                                    style = MaterialTheme.typography.labelSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier
+                                        .size(20.dp)
+                                        .offset(y = 3.dp)
+                                        .background(
+                                            color = Color.Black.copy(alpha = 0.9f),
+                                            shape = RoundedCornerShape(10.dp)
+                                        )
+                                        .padding(horizontal = 5.dp, vertical = 2.dp),
+
+                                )
+                            }
+
                             Row(
                                 modifier = Modifier,
                                 verticalAlignment = Alignment.CenterVertically
@@ -265,7 +296,7 @@ fun ItemImage(itemId: Int?) {
         Box(
             modifier = Modifier
                 .size(27.dp)
-                .background(Color.Gray.copy(alpha = 0.2f), RoundedCornerShape(10.dp))
+                .background(Color.Black.copy(alpha = 0.8f), RoundedCornerShape(10.dp))
         ) {
 
         }
@@ -279,7 +310,7 @@ fun ItemImage(itemId: Int?) {
             modifier = Modifier
                 .size(27.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(Color.Gray)
+                .background(Color.Black)
         )
     }
 }

@@ -54,6 +54,7 @@ data class Participant(
     val summonerName: String,
     val championName: String,
     val championId: Int,
+    val champLevel: Int,
     val perks: PerksDto,
     val kills: Int,
     val deaths: Int,

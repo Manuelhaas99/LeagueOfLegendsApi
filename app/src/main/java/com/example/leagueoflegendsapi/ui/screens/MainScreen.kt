@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.example.leagueoflegendsapi.model.RankedQueue
 import com.example.leagueoflegendsapi.ui.components.MatchesCardComponent
 import com.example.leagueoflegendsapi.ui.components.RankedFlexCardComponent
@@ -30,7 +31,10 @@ import com.example.leagueoflegendsapi.ui.viewModel.RiotViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScreen(riotViewModel: RiotViewModel = viewModel()) {
+fun MainScreen(
+    riotViewModel: RiotViewModel = viewModel(),
+    onMatchClick: (String) -> Unit,
+) {
 
     val summonerInfo by riotViewModel.summonerInfo
     val rankedInfoList by riotViewModel.summonerRanked
@@ -122,6 +126,7 @@ fun MainScreen(riotViewModel: RiotViewModel = viewModel()) {
                             .padding(top = 5.dp),
                         match = match,
                         myPuuid = myPuuid,
+                        navController = navController,
                     )
                 }
             }
